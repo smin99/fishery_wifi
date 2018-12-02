@@ -10,7 +10,7 @@ generate_percentile_text <- function(state, data) {
          ", the median offered Internet speed is ",
          result[3], "Mbps, with a standard deviation of ",
          round(sd(speeds), 2),
-         "Mbps, a huge inquality that remains problematic nationally. ",
+         "Mbps, a huge inequality that remains problematic nationally. ",
          "This means that lowest 25% speeds offered only go up to",
          result[2], "Mbps",
          ", while an ISP offering a competitive 75% speed can offer ",
