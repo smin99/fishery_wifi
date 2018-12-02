@@ -13,7 +13,8 @@ full_data <- fread("fcc_small.csv",
          StateAbbr != "GU" &
          StateAbbr != "AS" &
          StateAbbr != "MP" &
-         StateAbbr != "VI")
+         StateAbbr != "VI") %>%
+  mutate(StateName = tolower(setNames(state.name, state.abb)[StateAbbr]))
 
 # For the UI, we also find all the states.
 conus_states <- unique(full_data$StateAbbr)
