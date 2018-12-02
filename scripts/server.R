@@ -4,8 +4,9 @@ library(mapdata)
 library(dplyr)
 source("graphs.R")
 source("analysis_text.R")
+source("make_Table.R")
 
-FCC_data <- fread("data_filtered.csv", stringsAsFactors = FALSE)
+FCC_data <- fread("../data/data_filtered.csv", stringsAsFactors = FALSE)
 
 shinyServer(function(input, output) {
   output$statePlot <- renderPlot({
@@ -17,4 +18,7 @@ shinyServer(function(input, output) {
   output$stats <- renderText({
     generate_percentile_text(input$selected_state, FCC_data)
   })
+  output$ispTable <- renderTable({
+    table_data <- filter_data(input$selected_state)
+  }, bordered = TRUE)
 })
