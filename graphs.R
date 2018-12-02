@@ -23,3 +23,6 @@ make_pie_chart <- function(state, FCC_data) {
     theme(plot.title = element_text(size=22))
 }
 
+make_heat_map <- function(FCC_data) {
+  
+}
