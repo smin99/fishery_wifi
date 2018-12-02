@@ -4,19 +4,20 @@ states <- read.csv("states_filtered.csv", stringsAsFactors = FALSE)
 states <- states[order(states$x),]
 shinyUI(fluidPage(
   
-  titlePanel("FCC Broadband Data"),
+  titlePanel("\"It's like the WiFi at Fisheries\""),
+  p("-- An investigation of broadband speeds in the US"),
   
   sidebarLayout(
     sidebarPanel(
       selectInput("seleceted_state", "Select a state", 
                   choices = states, 
                   selected = 1)
-      
     ),
  
     mainPanel(
       plotOutput("statePlot"),
-      plotOutput("distPlot")
+      plotOutput("distPlot"),
+      tableOutput("ispTable")
     )
   )
 ))
