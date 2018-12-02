@@ -37,8 +37,16 @@ make_heat_map <- function(display_percentile, FCC_data) {
       states$percentile[i] = result$percentile
     }
   }
-  
+  if(as.numeric(display_percentile) == 0.25){
+    midpoint_value <- 7
+  }else if(as.numeric(display_percentile) == 0.5){
+    midpoint_value <- 75
+  }else{
+    
+  }
   ggplot(data = states) + 
     geom_polygon(aes(x = long, y = lat, fill = percentile, group = group), color = "white") + 
-    coord_fixed(1.3) + guides(fill=FALSE) + theme_void()
+    coord_fixed(1.3) + 
+    scale_fill_gradient2(low = "yellow", high = "red", mid="orange", midpoint = midpoint_value)
 }
+
