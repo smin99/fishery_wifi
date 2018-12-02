@@ -9,5 +9,5 @@ filter_data <- function(state){
     filter(StateAbbr == "WA") %>% 
     group_by(ProviderName) %>% 
     summarize(AvgMaxCIRDown=mean(MaxCIRDown), AvgMaxCIRUp=mean(MaxCIRUp)) %>% 
-    arrange(MaxCIRDown)
+    arrange(desc(AvgMaxCIRDown))
 }
