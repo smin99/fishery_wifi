@@ -9,9 +9,6 @@ shinyUI(fluidPage(
   
   sidebarLayout(
     sidebarPanel(
-      radioButtons("display_percentile", "Choose a percentile",
-                   choices = list("25th percentile" = 0.25, "median" = 0.5, "75th percentile" = 0.75), 
-                   selected = 0.25),
       selectInput("selected_state", "Select a state", 
                   choices = states, 
                   selected = 1)
