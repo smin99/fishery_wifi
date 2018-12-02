@@ -9,6 +9,9 @@ shinyUI(fluidPage(
   
   sidebarLayout(
     sidebarPanel(
+      radioButtons("display_data", "Download or Upload",
+                   choices = list("Download" = 1, "Upload" = 2), 
+                   selected = 1),
       selectInput("selected_state", "Select a state", 
                   choices = states, 
                   selected = 1)
@@ -19,7 +22,6 @@ shinyUI(fluidPage(
       hr(),
       textOutput("stats"),
       plotOutput("statePlot"),
-      plotOutput("distPlot"),
       tableOutput("ispTable")
     )
   )

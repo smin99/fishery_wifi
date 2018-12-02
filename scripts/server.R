@@ -13,7 +13,7 @@ shinyServer(function(input, output) {
     make_pie_chart(input$selected_state, FCC_data)
   })
   output$nationalPlot <- renderPlot({
-    make_heat_map(FCC_data)
+    make_heat_map(input$display_data, FCC_data)
   })
   output$stats <- renderText({
     generate_percentile_text(input$selected_state, FCC_data)
