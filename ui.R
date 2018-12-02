@@ -15,6 +15,8 @@ shinyUI(fluidPage(
     ),
  
     mainPanel(
+      plotOutput("nationalPlot"),
+      hr(),
       plotOutput("statePlot"),
       plotOutput("distPlot"),
       tableOutput("ispTable")
