@@ -1,7 +1,7 @@
 library(shiny)
 library(data.table)
 library(ggplot2)
-library(openintro)
+
 
 FCC_data <- fread("data_filtered.csv", stringsAsFactors = FALSE)
 shinyServer(function(input, output) {
