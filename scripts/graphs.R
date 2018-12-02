@@ -1,4 +1,6 @@
 library(ggplot2)
+library(mapdata)
+library(dplyr)
 
 make_pie_chart <- function(state, FCC_data) {
   filtered_FCC <- FCC_data %>% filter(StateAbbr == state) %>% 
@@ -23,6 +25,28 @@ make_pie_chart <- function(state, FCC_data) {
     theme(plot.title = element_text(size=22))
 }
 
-make_heat_map <- function(FCC_data) {
-  
+make_heat_map <- function(display_percentile, FCC_data) {
+  filtered_data <- FCC_data %>% select(StateName, MaxAdDown)
+  states <- map_data("state")
+  states$percentile <- NA
+  state_percentile <- filtered_data %>% group_by(StateName) %>% summarize(percentile = quantile(MaxAdDown, probs = as.numeric(display_percentile)))
+  for (i in 1:nrow(states)){
+    state_name <- states[i, "region"]
+    result <- filter(state_percentile, StateName == state_name)
+    if(nrow(result) != 0) {
+      states$percentile[i] = result$percentile
+    }
+  }
+  if(as.numeric(display_percentile) == 0.25){
+    midpoint_value <- 7
+  }else if(as.numeric(display_percentile) == 0.5){
+    midpoint_value <- 75
+  }else{
+    
+  }
+  ggplot(data = states) + 
+    geom_polygon(aes(x = long, y = lat, fill = percentile, group = group), color = "white") + 
+    coord_fixed(1.3) + 
+    scale_fill_gradient2(low = "yellow", high = "red", mid="orange", midpoint = midpoint_value)
 }
+

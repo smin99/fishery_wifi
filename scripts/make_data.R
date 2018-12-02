@@ -7,18 +7,19 @@ library(dplyr)
 #full_data <- fread("fbd_us_without_satellite_jun2017_v1.csv",
 full_data <- fread("fcc_small.csv",
                    stringsAsFactors = FALSE) %>%
-  filter(StateAbbr != "PR" &
-         StateAbbr != "AK" &
-         StateAbbr != "HI" &
-         StateAbbr != "GU" &
-         StateAbbr != "AS" &
-         StateAbbr != "MP" &
-         StateAbbr != "VI") %>%
+  filter(StateAbbr != "PR" & # Puerto Rico
+         StateAbbr != "AK" & # Alaska
+         StateAbbr != "HI" & # Hawaii
+         StateAbbr != "GU" & # Guam
+         StateAbbr != "AS" & # Samoa 
+         StateAbbr != "MP" & # Northern Mariana Islands
+         StateAbbr != "VI") %>% # Virgin Islands
   mutate(StateName = tolower(setNames(state.name, state.abb)[StateAbbr]))
 
 # For the UI, we also find all the states.
 conus_states <- unique(full_data$StateAbbr)
 
 # Write data.
-write.csv(full_data, "data_filtered.csv", row.names = FALSE)
-write.csv(conus_states, "states_filtered.csv", row.names = FALSE)
+write.csv(full_data, "../data/data_filtered.csv", row.names = FALSE)
+write.csv(conus_states, "../data/states_filtered.csv", row.names = FALSE)
+
