@@ -12,7 +12,7 @@ generate_percentile_text <- function(state, data) {
          round(sd(speeds), 2),
          "Mbps, a huge inquality that remains problematic nationally. ",
          "This means that lowest 25% speeds offered only go up to",
-         result[2],
+         result[2], "Mbps",
          ", while an ISP offering a competitive 75% speed can offer ",
          result[4], "Mbps.")
 }
