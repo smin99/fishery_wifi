@@ -20,5 +20,5 @@ shinyServer(function(input, output) {
   })
   output$ispTable <- renderTable({
     table_data <- filter_data(input$selected_state)
-  }, bordered = TRUE)
+  })
 })
