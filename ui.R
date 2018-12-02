@@ -9,7 +9,7 @@ shinyUI(fluidPage(
   
   sidebarLayout(
     sidebarPanel(
-      selectInput("seleceted_state", "Select a state", 
+      selectInput("selected_state", "Select a state", 
                   choices = states, 
                   selected = 1)
     ),
