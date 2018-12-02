@@ -2,6 +2,7 @@ library(shiny)
 library(data.table)
 library(mapdata)
 source("graphs.R")
+source("analysis_text.R")
 
 FCC_data <- fread("data_filtered.csv", stringsAsFactors = FALSE)
 
@@ -18,5 +19,8 @@ shinyServer(function(input, output) {
       geom_polygon(aes(x = long, y = lat, group = group), color = "white") + 
       coord_fixed(1.3) +
       guides(fill=FALSE) + theme_void()
+  })
+  output$stats <- renderText({
+    generate_percentile_text(input$selected_state, FCC_data)
   })
 })
