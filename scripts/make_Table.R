@@ -11,7 +11,7 @@ filter_data <- function(state){
     group_by(ProviderName) %>% 
     summarize(AvgMaxAdDown=mean(MaxAdDown), AvgMaxAdUp=mean(MaxAdUp), 
               AvgMaxCIRDown=mean(MaxCIRDown), AvgMaxCIRUp=mean(MaxCIRUp)) %>% 
-    filter(AvgMaxAdDown != 0 || AvgMaxAdUp != 0) %>% 
+    filter(AvgMaxAdDown != 0) %>% 
     arrange(desc(AvgMaxAdDown)) %>% 
     knitr::kable(format="html", digits=2, caption=paste0("Table 1: Speed of each Provider in ", state)) %>% 
     kable_styling()
