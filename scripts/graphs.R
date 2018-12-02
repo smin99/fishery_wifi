@@ -29,7 +29,7 @@ make_heat_map <- function(FCC_data) {
   filtered_data <- FCC_data %>% select(StateName, MaxAdDown)
   states <- map_data("state")
   states$percentile <- NA
-  state_percentile <- filtered_data %>% group_by(StateName) %>% summarize(percentile = quantile(MaxAdDown, probs = 0.25))
+  state_percentile <- filtered_data %>% group_by(StateName) %>% summarize(percentile = mean(MaxAdDown))
   for (i in 1:nrow(states)){
     state_name <- states[i, "region"]
     result <- filter(state_percentile, StateName == state_name)
@@ -41,8 +41,8 @@ make_heat_map <- function(FCC_data) {
   ggplot(data = states) + 
     geom_polygon(aes(x = long, y = lat, fill = Mbps, group = group), color = "white") + 
     coord_fixed(1.3) + 
-    scale_fill_gradient2(low = "yellow", high = "red", mid="orange") + 
-    ggtitle("25th percentile of advertised internet speed") + 
+    scale_fill_gradient2(low = "yellow", high = "red") + 
+    ggtitle("Average advertised internet download speed") + 
     theme(plot.title = element_text(size=22))
 }
 
