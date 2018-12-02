@@ -2,19 +2,35 @@ library(ggplot2)
 library(mapdata)
 library(dplyr)
 
-make_pie_chart <- function(state, FCC_data) {
-  filtered_FCC <- FCC_data %>% filter(StateAbbr == state) %>% 
-    select(MaxAdDown)
-  range_1_less<- filtered_FCC %>% filter(MaxAdDown <= 1) %>% nrow()
-  range_1_10 <- filtered_FCC %>% filter(MaxAdDown > 1 & MaxAdDown < 10) %>% nrow()
-  range_10_100 <- filtered_FCC %>% filter(MaxAdDown >= 10 & MaxAdDown < 100) %>% nrow()
-  range_100_1000 <- filtered_FCC %>% filter(MaxAdDown >= 100 & MaxAdDown < 1000) %>% nrow()
-  range_1000_more <- filtered_FCC %>% filter(MaxAdDown >= 1000) %>% nrow()
-  range_name <- c("<1 mbps", "1-10 mbps", "10-100 mbps", "100-1000 mbps", "1000+ mbps")
-  range_value <- c(range_1_less,  range_1_10, range_10_100, range_100_1000, range_1000_more)
-  range_data <- data.frame(range_name, range_value)
-  range_data <- range_data %>% rename(range = range_name) %>% 
-    rename(value = range_value)
+make_pie_chart <- function(display_data, state, FCC_data) {
+  if(display_data ==1){
+    filtered_FCC <- FCC_data %>% filter(StateAbbr == state) %>% 
+      select(MaxAdDown)
+    range_1_less<- filtered_FCC %>% filter(MaxAdDown <= 1) %>% nrow()
+    range_1_10 <- filtered_FCC %>% filter(MaxAdDown > 1 & MaxAdDown < 10) %>% nrow()
+    range_10_100 <- filtered_FCC %>% filter(MaxAdDown >= 10 & MaxAdDown < 100) %>% nrow()
+    range_100_1000 <- filtered_FCC %>% filter(MaxAdDown >= 100 & MaxAdDown < 1000) %>% nrow()
+    range_1000_more <- filtered_FCC %>% filter(MaxAdDown >= 1000) %>% nrow()
+    range_name <- c("<1 mbps", "1-10 mbps", "10-100 mbps", "100-1000 mbps", "1000+ mbps")
+    range_value <- c(range_1_less,  range_1_10, range_10_100, range_100_1000, range_1000_more)
+    range_data <- data.frame(range_name, range_value)
+    range_data <- range_data %>% rename(range = range_name) %>% 
+      rename(value = range_value)
+  }else{
+    filtered_FCC <- FCC_data %>% filter(StateAbbr == state) %>% 
+      select(MaxAdUp)
+    range_1_less<- filtered_FCC %>% filter(MaxAdUp <= 1) %>% nrow()
+    range_1_10 <- filtered_FCC %>% filter(MaxAdUp > 1 & MaxAdUp < 10) %>% nrow()
+    range_10_100 <- filtered_FCC %>% filter(MaxAdUp >= 10 & MaxAdUp < 100) %>% nrow()
+    range_100_1000 <- filtered_FCC %>% filter(MaxAdUp >= 100 & MaxAdUp < 1000) %>% nrow()
+    range_1000_more <- filtered_FCC %>% filter(MaxAdUp >= 1000) %>% nrow()
+    range_name <- c("<1 mbps", "1-10 mbps", "10-100 mbps", "100-1000 mbps", "1000+ mbps")
+    range_value <- c(range_1_less,  range_1_10, range_10_100, range_100_1000, range_1000_more)
+    range_data <- data.frame(range_name, range_value)
+    range_data <- range_data %>% rename(range = range_name) %>% 
+      rename(value = range_value)
+  }
+ 
   
   ggplot(range_data, aes(x="", y=value, fill=range))+
     geom_bar(width = 2, stat = "identity", color = "black") + 
@@ -56,3 +72,25 @@ make_heat_map <- function(display_data, FCC_data) {
     theme(plot.title = element_text(size=22))
 }
 
+make_bar_plot <- function(display_data, state, FCC_data) {
+  if(display_data ==1){
+    needed_data <- FCC_data %>% filter(StateAbbr == state) %>% 
+      select(TechCode,  MaxAdDown)
+    DSL <- median((needed_data %>% filter(TechCode >= 10 & TechCode < 40))$MaxAdDown)
+    Cable <- median((needed_data %>% filter(TechCode >= 40 & TechCode < 50))$MaxAdDown)
+    Fiber <- median((needed_data %>% filter(TechCode >= 50 & TechCode < 60))$MaxAdDown)
+    Satellite_and_others <- median((needed_data %>% filter(TechCode >= 60))$MaxAdDown)
+    graphing_data <- data.frame(Type = c("DSL", "Cable", "Fiber", "Satellite and others"), Average.Speed = c(DSL, Cable, Fiber, Satellite_and_others))
+    print(graphing_data)
+    ggplot(graphing_data, aes(x=Type, y=Average.Speed)) + geom_bar(stat="identity") + coord_flip()
+  }else{
+    needed_data <- FCC_data %>% filter(StateAbbr == state) %>% 
+      select(TechCode,  MaxAdUp)
+    DSL <- median((needed_data %>% filter(TechCode >= 10 & TechCode < 40))$MaxAdUp)
+    Cable <- median((needed_data %>% filter(TechCode >= 40 & TechCode < 50))$MaxAdUp)
+    Fiber <- median((needed_data %>% filter(TechCode >= 50 & TechCode < 60))$MaxAdUp)
+    Satellite_and_others <- median((needed_data %>% filter(TechCode >= 60))$MaxAdUp)
+    graphing_data <- data.frame(Type = c("DSL", "Cable", "Fiber", "Satellite and others"), Average.Speed = c(DSL, Cable, Fiber, Satellite_and_others))
+    ggplot(graphing_data, aes(x=Type, y=Average.Speed)) + geom_bar(stat="identity") + coord_flip()
+  }
+}

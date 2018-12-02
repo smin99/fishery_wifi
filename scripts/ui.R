@@ -21,6 +21,7 @@ shinyUI(fluidPage(
       plotOutput("nationalPlot"),
       hr(),
       textOutput("stats"),
+      plotOutput("barplot"),
       plotOutput("statePlot"),
       tableOutput("ispTable")
     )
