@@ -25,11 +25,21 @@ make_pie_chart <- function(state, FCC_data) {
     theme(plot.title = element_text(size=22))
 }
 
-make_heat_map <- function(FCC_data) {
-  filtered_data <- FCC_data %>% select(StateName, MaxAdDown)
-  states <- map_data("state")
-  states$percentile <- NA
-  state_percentile <- filtered_data %>% group_by(StateName) %>% summarize(percentile = mean(MaxAdDown))
+make_heat_map <- function(display_data, FCC_data) {
+  if (display_data ==1){
+    filtered_data <- FCC_data %>% select(StateName, MaxAdDown)
+    states <- map_data("state")
+    states$percentile <- NA
+    state_percentile <- filtered_data %>% group_by(StateName) %>% summarize(percentile = mean(MaxAdDown))
+    graph_name <- "download"
+  }else{
+    filtered_data <- FCC_data %>% select(StateName, MaxAdUp)
+    states <- map_data("state")
+    states$percentile <- NA
+    state_percentile <- filtered_data %>% group_by(StateName) %>% summarize(percentile = mean(MaxAdUp))
+    graph_name <- "upload"
+  }
+
   for (i in 1:nrow(states)){
     state_name <- states[i, "region"]
     result <- filter(state_percentile, StateName == state_name)
@@ -37,12 +47,12 @@ make_heat_map <- function(FCC_data) {
       states$percentile[i] = result$percentile
     }
   }
-  states <- states %>% rename( Mbps = percentile)
+  states <- states %>% rename(Mbps = percentile)
   ggplot(data = states) + 
     geom_polygon(aes(x = long, y = lat, fill = Mbps, group = group), color = "white") + 
     coord_fixed(1.3) + 
     scale_fill_gradient2(low = "yellow", high = "red") + 
-    ggtitle("Average advertised internet download speed") + 
+    ggtitle(paste0("Average advertised internet ", graph_name, " speed")) + 
     theme(plot.title = element_text(size=22))
 }
 
