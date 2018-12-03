@@ -5,7 +5,8 @@ generate_percentile_text <- function(state, data) {
     data, StateAbbr == state)$MaxAdDown
   result <- quantile(speeds,
                      probs = c(0, 0.25, 0.5, 0.75, 1))
-  
+  #These lines are used to paste the text underneath the heat map,
+  #giving more descriptive detail
   paste0("In ", state,
          ", the median offered Internet speed is ",
          result[3], "Mbps, with a standard deviation of ",
