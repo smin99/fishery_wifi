@@ -2,10 +2,13 @@ library(ggplot2)
 library(mapdata)
 library(dplyr)
 
+
+#pie-chart code
 make_pie_chart <- function(display_data, state, FCC_data) {
   if(display_data ==1){
     filtered_FCC <- FCC_data %>% filter(StateAbbr == state) %>% 
       select(MaxAdDown)
+    #filtering between data speeds with filter. separating speeds sort of logarithmically
     range_1_less<- filtered_FCC %>% filter(MaxAdDown <= 1) %>% nrow()
     range_1_10 <- filtered_FCC %>% filter(MaxAdDown > 1 & MaxAdDown < 10) %>% nrow()
     range_10_100 <- filtered_FCC %>% filter(MaxAdDown >= 10 & MaxAdDown < 100) %>% nrow()
@@ -31,7 +34,7 @@ make_pie_chart <- function(display_data, state, FCC_data) {
       rename(value = range_value)
   }
  
-  
+  #bar plot
   ggplot(range_data, aes(x="", y=value, fill=range))+
     geom_bar(width = 2, stat = "identity", color = "black") + 
     coord_polar("y", start=0) + 
@@ -40,7 +43,7 @@ make_pie_chart <- function(display_data, state, FCC_data) {
     theme_void() +
     theme(plot.title = element_text(size=22))
 }
-
+#heat map information
 make_heat_map <- function(display_data, FCC_data) {
   if (display_data ==1){
     filtered_data <- FCC_data %>% select(StateName, MaxAdDown)
@@ -71,7 +74,7 @@ make_heat_map <- function(display_data, FCC_data) {
     ggtitle(paste0("Average advertised internet ", graph_name, " speed")) + 
     theme(plot.title = element_text(size=22))
 }
-
+#bar plot for displaying different forms of internet services
 make_bar_plot <- function(display_data, state, FCC_data) {
   if(display_data ==1){
     needed_data <- FCC_data %>% filter(StateAbbr == state) %>% 
