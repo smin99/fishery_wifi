@@ -2,9 +2,7 @@
 library(dplyr)
 library(kableExtra)
 
-allData <- read.csv("../data/data_filtered.csv")
-
-filter_data <- function(state){
+filter_data <- function(state, allData){
   state_data <- allData %>% 
     select(ProviderName, DBAName, HoldingCompanyName, HocoFinal, StateAbbr, MaxAdDown, MaxAdUp) %>% 
     filter(StateAbbr == state) %>% 
