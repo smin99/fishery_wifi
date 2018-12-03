@@ -1,4 +1,4 @@
-# United UW FIG
+# Broadband Provider Investigation
 
 Ryker Bukowski, Seungmin Hwang, Kevin Wang, Howard Xiao
 
@@ -20,4 +20,19 @@ The project decided to display the information provided by the FCC in several di
 
 This data is important for consumers to have, because it gives them the information in which they need to fully understand what is available to them. Data rates and speeds change based on location and state and is an important factor to take into consideration when making a variety of decisions and this data and visualization can be an important resource. 
 
+# Usage
+
+## Data gathering
+
+The data that was prepared for this presentation is available in the `data/` directory. The script that creates this dataset, with full instructions in the comments, is provided in `scripts/make_data.R`, which you may also elect to follow from the comfort of your own home.
+
+## Presentation
+
+This project is presented using an RShiny app. The actual app is located in the `scripts/` data, which can be run locally or uploaded to a third party hosting service like ShinyApps.io.
+
+## Dependencies
+
+If you do choose to run it locally, install dependencies necessary by:
+
+`install.packages(c("shiny", "data.table", "mapdata", "ggplot2", "dplyr", "kableExtra"))`
 
