@@ -19,7 +19,7 @@ shinyServer(function(input, output) {
     generate_percentile_text(input$selected_state, FCC_data)
   })
   output$ispTable <- reactive({
-    filter_data(input$selected_state)
+    filter_data(input$selected_state, FCC_data)
   })
   output$barplot <- renderPlot({
     make_bar_plot(input$display_data, input$selected_state, FCC_data)
