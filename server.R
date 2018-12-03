@@ -2,11 +2,11 @@ library(shiny)
 library(data.table)
 library(mapdata)
 library(dplyr)
-source("graphs.R")
-source("analysis_text.R")
-source("make_Table.R")
+source("scripts/graphs.R")
+source("scripts/analysis_text.R")
+source("scripts/make_Table.R")
 
-FCC_data <- fread("../data/data_filtered.csv", stringsAsFactors = FALSE)
+FCC_data <- fread("data/data_filtered.csv", stringsAsFactors = FALSE)
 
 shinyServer(function(input, output) {
   output$statePlot <- renderPlot({

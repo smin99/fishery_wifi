@@ -1,6 +1,6 @@
 library(shiny)
 
-states <- read.csv("../data/states_filtered.csv", stringsAsFactors = FALSE)
+states <- read.csv("data/states_filtered.csv", stringsAsFactors = FALSE)
 states <- states[order(states$x),]
 shinyUI(fluidPage(
   
