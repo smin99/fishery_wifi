@@ -4,7 +4,8 @@ library(dplyr)
 
 # From the FCC dataset website, export the data as a CSV file and read it in.
 # http://transition.fcc.gov/form477/BroadbandData/Fixed/Jun17/Version%201/US-Fixed-without-Satellite-Jun2017.zip
-#full_data <- fread("fbd_us_without_satellite_jun2017_v1.csv",
+# Since we are performing statistical analysis, you may elect to read a random sample instead.
+# Read the man pages for shuf(1) on how to do that.
 full_data <- fread("fcc_small.csv",
                    stringsAsFactors = FALSE) %>%
   filter(StateAbbr != "PR" & # Puerto Rico

@@ -85,7 +85,6 @@ make_bar_plot <- function(display_data, state, FCC_data) {
     Satellite_and_others <- median((needed_data %>% filter(TechCode >= 60))$MaxAdDown)
     graphing_data <- data.frame(Type = c("DSL", "Cable", "Fiber", "Satellite and others"), 
                                 Average.Speed = c(DSL, Cable, Fiber, Satellite_and_others))
-    print(graphing_data)
     ggplot(graphing_data, aes(x = Type, y = Average.Speed, fill = Type)) + geom_bar(stat="identity") + 
       coord_flip()  + scale_fill_brewer(palette="YlGnBu") +
       ggtitle("Median Advertised Speed of Each Mode of Service") + 
