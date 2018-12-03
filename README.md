@@ -33,7 +33,7 @@ The data that was prepared for this presentation is available in the `data/` dir
 
 ## Presentation
 
-This project is presented using an RShiny app. The actual app is located in the `scripts/` data, which can be run locally or uploaded to a third party hosting service like ShinyApps.io.
+This project is presented using an RShiny app. The actual app is located in the project directory, which can be run locally or uploaded to a third party hosting service like ShinyApps.io.
 
 ## Dependencies
 
