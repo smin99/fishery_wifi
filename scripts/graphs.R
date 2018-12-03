@@ -39,7 +39,7 @@ make_pie_chart <- function(display_data, state, FCC_data) {
     geom_bar(width = 2, stat = "identity", color = "black") + 
     coord_polar("y", start=0) + 
     ggtitle(paste0("Advertised Speed Categories in ", state)) +
-    scale_fill_brewer(palette = "Set1") +
+    scale_fill_brewer(palette = "Pastel1") +
     theme_void() +
     theme(plot.title = element_text(size=22))
 }
