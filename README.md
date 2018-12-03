@@ -10,7 +10,9 @@ Something of note: This information is the claimed or advertised rates of intern
 
 ### About the Data
 
-The data set provided by the FCC is very large, roughly 4 gigabytes. Within the data, there are 68.4 million rows of information, spanning across 17 columns. Due to the size of the data and the amount of information within, the group created a smaller random sample (using `shuf`) to use in the project, due to the idea that if a data is correctly randomly sampled the statistics would still be representative of the entire data set. After this was done, the information used was only a fraction of the size, allowing the teams computers to more efficiently sort through the data set. 
+<img src="fcc.png" height="100px">
+
+The [data set](https://opendata.fcc.gov/Wireline/Fixed-Broadband-Deployment-Data-June-2017-Status-V/9r8r-g7ut) provided by the FCC is very large, roughly 4 gigabytes. Within the data, there are 68.4 million rows of information, spanning across 17 columns. Due to the size of the data and the amount of information within, the group created a smaller random sample (using `shuf`) to use in the project, due to the idea that if a data is correctly randomly sampled the statistics would still be representative of the entire data set. After this was done, the information used was only a fraction of the size, allowing the teams computers to more efficiently sort through the data set. 
 
 ### How the Data is Desplayed
 
