@@ -80,9 +80,13 @@ make_bar_plot <- function(display_data, state, FCC_data) {
     Cable <- median((needed_data %>% filter(TechCode >= 40 & TechCode < 50))$MaxAdDown)
     Fiber <- median((needed_data %>% filter(TechCode >= 50 & TechCode < 60))$MaxAdDown)
     Satellite_and_others <- median((needed_data %>% filter(TechCode >= 60))$MaxAdDown)
-    graphing_data <- data.frame(Type = c("DSL", "Cable", "Fiber", "Satellite and others"), Average.Speed = c(DSL, Cable, Fiber, Satellite_and_others))
+    graphing_data <- data.frame(Type = c("DSL", "Cable", "Fiber", "Satellite and others"), 
+                                Average.Speed = c(DSL, Cable, Fiber, Satellite_and_others))
     print(graphing_data)
-    ggplot(graphing_data, aes(x=Type, y=Average.Speed)) + geom_bar(stat="identity") + coord_flip()
+    ggplot(graphing_data, aes(x = Type, y = Average.Speed, fill = Type)) + geom_bar(stat="identity") + 
+      coord_flip()  + scale_fill_brewer(palette="YlGnBu") + ggtitle("Median Speed of Each Mode of Service") + 
+      theme(plot.title = element_text(size=22))
+
   }else{
     needed_data <- FCC_data %>% filter(StateAbbr == state) %>% 
       select(TechCode,  MaxAdUp)
@@ -90,7 +94,11 @@ make_bar_plot <- function(display_data, state, FCC_data) {
     Cable <- median((needed_data %>% filter(TechCode >= 40 & TechCode < 50))$MaxAdUp)
     Fiber <- median((needed_data %>% filter(TechCode >= 50 & TechCode < 60))$MaxAdUp)
     Satellite_and_others <- median((needed_data %>% filter(TechCode >= 60))$MaxAdUp)
-    graphing_data <- data.frame(Type = c("DSL", "Cable", "Fiber", "Satellite and others"), Average.Speed = c(DSL, Cable, Fiber, Satellite_and_others))
-    ggplot(graphing_data, aes(x=Type, y=Average.Speed)) + geom_bar(stat="identity") + coord_flip()
+    graphing_data <- data.frame(Type = c("DSL", "Cable", "Fiber", "Satellite and others"), 
+                                Average.Speed = c(DSL, Cable, Fiber, Satellite_and_others))
+    ggplot(graphing_data, aes(x = Type, y = Average.Speed, fill = Type)) + geom_bar(stat="identity") + 
+      coord_flip()  + scale_fill_brewer(palette="YlGnBu") + ggtitle("Median Speed of Each Mode of Service") + 
+      theme(plot.title = element_text(size=22))
+
   }
 }
