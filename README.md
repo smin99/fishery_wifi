@@ -7,7 +7,8 @@ Ryker Bukowski, Seungmin Hwang, Kevin Wang, Howard Xiao
 
 This data set is available online, provided by the Federal Communications Commission (FCC). All Internet Service Providers (ISP) are required to submit their advertised internet rates every six months. The information was last updated March 20, 2018. This data is made available to the public through the FCC on their website, located [here]( https://opendata.fcc.gov/Wireline/Fixed-Broadband-Deployment-Data-December-2016-Stat/b5f4-szwq).
 
-Something of note: This information is the claimed or advertised rates of internet service, which may differ from the actual rates which consumers will receive. 
+Something of note: This information is the claimed or advertised rates of internet service, which may differ from the actual rates which consumers will receive.
+
 
 ### About the Data
 
