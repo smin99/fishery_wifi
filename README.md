@@ -1,7 +1,8 @@
 # Broadband Provider Investigation
 
 Ryker Bukowski, Seungmin Hwang, Kevin Wang, Howard Xiao
-[Shiny app web address](https://minhwang.shinyapps.io/fishery_wifi/)
+
+[View a demo on ShinyApps.io.](https://minhwang.shinyapps.io/fishery_wifi/) Please give the data time to download.
 
 # Advertised Internet Speeds Across the United States
 
