@@ -5,22 +5,23 @@ states <- states[order(states$x),]
 shinyUI(fluidPage(
   
   titlePanel("\"It's like the WiFi at Fisheries\""),
-  p("-- An investigation of broadband speeds in the US"),
+  p("-- An investigation of broadband service providers in the US"),
   
   sidebarLayout(
     sidebarPanel(
-      radioButtons("display_data", "Download or Upload",
-                   choices = list("Download" = 1, "Upload" = 2), 
+      radioButtons("display_data", "Type of Speed Advertised",
+                   choices = list("Max Download" = 1, "Max Upload" = 2), 
                    selected = 1),
       selectInput("selected_state", "Select a state", 
                   choices = states, 
-                  selected = 1)
+                  selected = "WA")
     ),
  
     mainPanel(
       plotOutput("nationalPlot"),
       hr(),
       textOutput("stats"),
+      p(),
       plotOutput("barplot"),
       plotOutput("statePlot"),
       tableOutput("ispTable")
