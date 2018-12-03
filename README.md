@@ -8,7 +8,6 @@ This data set is available online, provided by the Federal Communications Commis
 
 Something of note: This information is the claimed or advertised rates of internet service, which may differ from the actual rates which consumers will receive.
 
-![FCC]("fcc.png")
 
 ### About the Data
 
