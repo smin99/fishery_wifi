@@ -5,7 +5,7 @@ states <- states[order(states$x),]
 
 
 shinyUI(dashboardPage(
-  dashboardHeader(title = "Like WiFi at Fisheries"),
+  dashboardHeader(title = "Like WiFi at Fisheries", titleWidth = 700),
   dashboardSidebar(
     sidebarMenu(
       menuItem("National Data", tabName = "heat_map", icon = icon("map")),
@@ -19,38 +19,37 @@ shinyUI(dashboardPage(
       
       tabItem(tabName = "heat_map",
               fluidRow(
-                box(plotOutput("nationalPlot"), width = 12),
+                box(radioButtons("display_data1", "Type of Speed Advertised",
+                                 choices = list("Max Download" = 1, "Max Upload" = 2), 
+                                 selected = 1), height = 108, background = "navy")
+              ),
+              fluidRow(
+                box(plotOutput("nationalPlot"), width = 12, background = "teal"),
                 box(p("This plot shows a heatmap of advertised Internet speeds in the contiguous United States,
                       separated by state and the averages of advertised internet speeds. As some states have
                       less Internet Service Providers, they may appear to have higher averages, as opposed to
                       data from larger states which may too be skewed by a large amount of rural dialup. 
                       Supplement your knwoledge with the following charts and tables to help you make a better
-                      informed decision."), width=12)
-                ),
-              fluidRow(
-                box(radioButtons("display_data1", "Type of Speed Advertised",
-                                 choices = list("Max Download" = 1, "Max Upload" = 2), 
-                                 selected = 1),  width = 4)
-                
-                
+                      informed decision."), width=12, background = "black")
               )
+              
                 ),
       
       tabItem(tabName = "pie_chart",
               fluidRow(
                 box(radioButtons("display_data2", "Type of Speed Advertised",
                                  choices = list("Max Download" = 1, "Max Upload" = 2), 
-                                 selected = 1)),
+                                 selected = 1), height = 108, background = "navy"),
                 box(selectInput("selected_state2", "Select a state", 
                                 choices = states, 
-                                selected = "WA"))
+                                selected = "WA"), height = 108, background = "maroon")
                 
               ), 
               fluidRow(
-                box(plotOutput("statePlot"), width = 12)
+                box(plotOutput("statePlot"), width = 12, background = "teal")
               ),
               fluidRow(
-                box(textOutput("stats"), width = 12)
+                box(textOutput("stats"), width = 12, background = "black")
               )
       ),
       
@@ -58,13 +57,13 @@ shinyUI(dashboardPage(
               fluidRow(
                 box(radioButtons("display_data3", "Type of Speed Advertised",
                                  choices = list("Max Download" = 1, "Max Upload" = 2), 
-                                 selected = 1)),
+                                 selected = 1), height = 108, background = "navy"),
                 box(selectInput("selected_state3", "Select a state", 
                                 choices = states, 
-                                selected = "WA"))
+                                selected = "WA"), height = 108, background = "maroon")
               ), 
               fluidRow(
-                box(plotOutput("barPlot"), width = 12)
+                box(plotOutput("barPlot"), width = 12, background = "teal")
               )
       ),
       
@@ -72,10 +71,10 @@ shinyUI(dashboardPage(
               fluidRow(
                 box(selectInput("selected_state4", "Select a state", 
                                 choices = states, 
-                                selected = "WA"))
+                                selected = "WA"), height = 108, background = "maroon")
               ),
               fluidRow(
-                box(tableOutput("ispTable"), width = 12)
+                box(tableOutput("ispTable"), width = 12, background = "teal")
               )
       )
               )
