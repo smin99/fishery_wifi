@@ -19,10 +19,10 @@ shinyUI(dashboardPage(
     titleWidth = 290),
   dashboardSidebar(
     sidebarMenu(
-      menuItem("National Data", tabName = "heat_map", icon = icon("map")),
-      menuItem("Each State's Data", tabName = "pie_chart", icon = icon("pie-chart")),
-      menuItem("Each Mode of Service", tabName = "bar_plot", icon = icon("bar-chart")),
-      menuItem("Each Provider", tabName = "table", icon = icon("table"))), 
+      menuItem("National Internet Speeds", tabName = "heat_map", icon = icon("map")),
+      menuItem("Statewide Internet Speeds", tabName = "pie_chart", icon = icon("pie-chart")),
+      menuItem("Statewide Modes' Speeds", tabName = "bar_plot", icon = icon("bar-chart")),
+      menuItem("Statewide Provider's Speeds", tabName = "table", icon = icon("table"))), 
     width = 290
   ),
   dashboardBody(
