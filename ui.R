@@ -5,14 +5,14 @@ states <- states[order(states$x),]
 
 
 shinyUI(dashboardPage(
-  dashboardHeader(title = "Like WiFi at Fisheries", titleWidth = 700),
+  dashboardHeader(title = "\"It's like the WiFi at Fisheries\"", titleWidth = 290),
   dashboardSidebar(
     sidebarMenu(
       menuItem("National Data", tabName = "heat_map", icon = icon("map")),
       menuItem("Each State's Data", tabName = "pie_chart", icon = icon("pie-chart")),
       menuItem("Each Mode of Service", tabName = "bar_plot", icon = icon("bar-chart")),
       menuItem("Each Provider", tabName = "table", icon = icon("table"))
-    )
+    ), width = 290
   ),
   dashboardBody(
     tabItems(
@@ -74,7 +74,7 @@ shinyUI(dashboardPage(
                                 selected = "WA"), height = 108, background = "maroon")
               ),
               fluidRow(
-                box(tableOutput("ispTable"), width = 12, background = "teal")
+                box(tableOutput("ispTable"), width = 12, background = "black")
               )
       )
               )

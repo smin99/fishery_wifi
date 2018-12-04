@@ -33,8 +33,7 @@ make_pie_chart <- function(display_data, state, FCC_data) {
     range_data <- range_data %>% rename(range = range_name) %>% 
       rename(value = range_value)
   }
- 
-  #bar plot
+ # plotting
   ggplot(range_data, aes(x="", y=value, fill=range))+
     geom_bar(width = 2, stat = "identity", color = "black") + 
     coord_polar("y", start=0) + 
