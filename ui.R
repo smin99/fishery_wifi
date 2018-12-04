@@ -85,7 +85,7 @@ shinyUI(dashboardPage(
                                 selected = "WA"), height = 108, background = "maroon")
               ),
               fluidRow(
-                box(tableOutput("ispTable"), width = 12, background = "black")
+                box(tableOutput("ispTable"), width = 12, background = NULL)
               )
       )
               )
