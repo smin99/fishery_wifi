@@ -2,7 +2,7 @@
 
 Ryker Bukowski, Seungmin Hwang, Kevin Wang, Howard Xiao
 
-[View a demo on ShinyApps.io.](https://minhwang.shinyapps.io/fishery_wifi/) Please give the data time to download.
+[View a demo on ShinyApps.io.](https://ktw0222.shinyapps.io/fishery_wifi/) Please give the data time to download.
 
 # Advertised Internet Speeds Across the United States
 
@@ -39,5 +39,5 @@ This project is presented using an RShiny app. The actual app is located in the 
 
 If you do choose to run it locally, install dependencies necessary by:
 
-`install.packages(c("shiny", "data.table", "mapdata", "ggplot2", "dplyr", "kableExtra"))`
+`install.packages(c("shiny", "shinydashboard", "data.table", "mapdata", "ggplot2", "dplyr", "kableExtra"))`
 
