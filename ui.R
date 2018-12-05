@@ -6,7 +6,7 @@ states <- states[order(states$x),]
 
 shinyUI(dashboardPage(
   dashboardHeader(
-    title = "\"It's like the WiFi at Fisheries\"",
+    title = "Investigating Fixed Broadband Speeds in US",
     dropdownMenu(type = "messages", badgeStatus = NULL,
       messageItem("Instructor","Ott Toomet"),
       messageItem("Teachers Assistant","Alvin Tran"),
