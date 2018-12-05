@@ -6,14 +6,14 @@ states <- states[order(states$x),]
 
 shinyUI(dashboardPage(
   dashboardHeader(
-    title = "Investigating Fixed Broadband Speeds in US",
+    title = "Investigating Fixed Broadband Speeds in CON US",
     dropdownMenu(type = "messages", badgeStatus = NULL,
-      messageItem("Instructor","Ott Toomet"),
-      messageItem("Teachers Assistant","Alvin Tran"),
+      messageItem("Instructor", "Ott Toomet"),
+      messageItem("Teachers Assistant", "Alvin Tran"),
       messageItem("Author", "Kevin Wang"),
-      messageItem("Author","Howard Xiao"),
-      messageItem("Author","Min Hwang"),
-      messageItem("Author","Ryker Bukowski"),
+      messageItem("Author", "Howard Xiao"),
+      messageItem("Author", "Min Hwang"),
+      messageItem("Author", "Ryker Bukowski"),
       headerText = "Contributers",
       icon = icon("user-circle")),
     titleWidth = 290),
